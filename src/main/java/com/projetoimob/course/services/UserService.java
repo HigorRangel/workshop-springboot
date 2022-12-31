@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projetoimob.course.entities.User;
-import com.projetoimob.course.repositories.UserRepository;
+import com
+.projetoimob.course.repositories.UserRepository;
 
 @Service
 public class UserService {
