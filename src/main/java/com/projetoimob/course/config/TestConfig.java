@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.projetoimob.course.entities.Category;
 import com.projetoimob.course.entities.Order;
 import com.projetoimob.course.entities.OrderItem;
+import com.projetoimob.course.entities.Payment;
 import com.projetoimob.course.entities.Product;
 import com.projetoimob.course.entities.User;
 import com.projetoimob.course.entities.enums.OrderStatus;
@@ -82,7 +83,14 @@ public class TestConfig implements CommandLineRunner{
 		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 		
 		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
-	
+		
+		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+		o1.setPayment(pay1);
+		
+		//Quando a relação é feita de um para um, não é chamado o repository da classe independente
+		//Como o order é independente e o payment é dependente, então é chamado o save do order.
+		orderRepository.save(o1);
+
 	}
 	
 	
